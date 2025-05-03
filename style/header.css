@@ -1,0 +1,18 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6875rem;
+
+  & span {
+    font-weight: 900;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+}
+
+@media (width > 64em) {
+  header {
+    justify-content: start;
+  }
+}

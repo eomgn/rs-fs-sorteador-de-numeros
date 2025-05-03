@@ -1,0 +1,23 @@
+.container {
+  --max-width: 375px;
+  width: min(var(--max-width), 100% - var(--px-lg) * 2);
+  margin-inline: auto;
+  padding-block: 2.75rem;
+}
+
+.ff-sora-sans {
+  font-family: var(--ff-sora-sans);
+}
+
+.ff-roboto-mono-sans {
+  font-family: var(--ff-roboto-mono-sans);
+}
+.ff-roboto-flex-sans {
+  font-family: var(--ff-roboto-flex-sans);
+}
+
+@media (width > 64em) {
+  .container {
+    --max-width: 64em; /* 1024px */
+  }
+}

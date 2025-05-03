@@ -1,0 +1,30 @@
+section {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "hero"
+    "sortition"
+    "works";
+}
+
+#hero {
+  grid-area: hero;
+}
+
+#works {
+  grid-area: works;
+}
+
+#sortition {
+  grid-area: sortition;
+}
+
+@media (width > 64em) {
+  section {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas:
+      "hero sortition"
+      "works sortition";
+  }
+}

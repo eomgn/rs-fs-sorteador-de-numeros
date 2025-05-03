@@ -1,0 +1,74 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --content-primary: #ffffff;
+  --content-secondary: #c7c9cc;
+  --content-tertiary: #d9d9d9;
+  --content-brand: #c58de7;
+  --color-inverse: #030203;
+  --background-primary: #020202;
+  --background-secondary: #111012;
+  --background-tertiary: #24222e;
+  --background-brand: #c58de7;
+  --background-gray: #3d3d3d;
+  --accent-pink: #d586e0;
+  --accent-blue: #91a1fa;
+  --accent-green: #77c0aa;
+  --accent-lime: #d1dc97;
+  --accent-red: #e9a9b3;
+
+  /* font-family */
+  --ff-sora-sans: "Sora", sans-serif;
+  --ff-roboto-mono-sans: "Roboto Mono", monospace;
+  --ff-roboto-flex-sans: "Roboto Flex", sans-serif;
+
+  /* padding - X */
+  --px-lg: 2.25rem; /* 36px */
+}
+
+html {
+  color: var(--content-primary);
+
+  overflow-x: hidden;
+
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background-primary);
+  background-image: url(../assets/images/img-background.png);
+}
+
+main {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.75) 22.66%,
+    rgba(0, 0, 0, 0.54) 100%
+  );
+  width: 100%;
+  height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  display: inline-block;
+}
+
+/* Shapes
+
+position: absolute;
+width: 1366px;
+height: 768px;
+left: 0px;
+top: 0px;
+
+background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 22.66%, rgba(0, 0, 0, 0.54) 100%), url(inspiration-geometry.png); */
