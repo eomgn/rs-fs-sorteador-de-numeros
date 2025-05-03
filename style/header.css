@@ -3,11 +3,12 @@ header {
   align-items: center;
   justify-content: center;
   gap: 0.6875rem;
+  padding-bottom: 2.875rem;
 
   & span {
     font-family: var(--ff-sora-sans);
     font-weight: 900;
-    font-size: 24px;
+    font-size: 1.5rem;
     text-transform: uppercase;
   }
 }
