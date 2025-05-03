@@ -18,7 +18,7 @@ section {
     /* gradient for text */
     text-transform: uppercase;
     background: -webkit-linear-gradient(0deg, #c7c9cc, #3d3d3d 100%);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
