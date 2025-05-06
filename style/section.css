@@ -9,6 +9,7 @@ section {
 
 #hero {
   grid-area: hero;
+  padding-bottom: 2.625rem;
 
   & span {
     font-family: var(--ff-roboto-mono-sans);
@@ -27,7 +28,7 @@ section {
     text-transform: uppercase;
     font-size: 2.5rem;
     line-height: 130%;
-    padding-block: 0.5rem 2.625rem;
+    padding-top: 0.5rem;
   }
 }
 
@@ -36,7 +37,7 @@ section {
   display: grid;
   gap: 2.25rem;
 
-  div {
+  & div {
     position: relative;
     padding-left: 1.75rem;
 
@@ -71,6 +72,131 @@ section {
 
 #sortition {
   grid-area: sortition;
+  display: grid;
+  gap: 2.5rem;
+
+  div {
+    & h2 {
+      text-transform: uppercase;
+      font-family: var(--ff-roboto-flex-sans);
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 150%;
+      color: var(--content-primary);
+      padding-bottom: 0.25rem;
+    }
+
+    & p {
+      font-family: var(--ff-roboto-flex-sans);
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 150%;
+      color: var(--content-tertiary);
+    }
+  }
+
+  form {
+    & .input-wrapper {
+      display: flex;
+      gap: 0.75rem;
+
+      & .input-inner {
+        display: grid;
+        text-align: center;
+
+        & label {
+          text-transform: uppercase;
+          font-family: var(--ff-roboto-flex-sans);
+          font-size: 1rem;
+          font-weight: 600;
+          line-height: 150%;
+          color: var(--content-secondary);
+        }
+
+        & input {
+          width: 100%;
+          position: relative;
+
+          font-family: var(--ff-sora-sans);
+          font-size: 2rem;
+          font-weight: 800;
+          line-height: 150%;
+          color: var(--content-primary);
+          text-align: center;
+
+          border-radius: 0.5rem;
+          border: 2px solid transparent;
+          background-color: var(--background-secondary);
+          outline: 2px solid transparent;
+          padding: 0.25rem 0.5rem;
+
+          &::-webkit-inner-spin-button {
+            appearance: none;
+          }
+
+          &:hover,
+          &:focus {
+            border: 2px solid transparent;
+
+            /* Dois backgrounds:
+              - O primeiro é a cor de fundo do input, que é o valor de var(--background-secondary).
+              - O segundo é o gradiente, que cria a borda com um efeito de transição de cor.
+              - O `background-clip: padding-box, border-box` faz com que o fundo principal preencha a área interna do `input` (padding-box), e o gradiente preencha a borda (border-box).
+              */
+            background-image: linear-gradient(
+                /* Cor de fundo do input,a mesma cor, para manter o fundo sólido */
+                  var(--background-secondary),
+                var(--background-secondary)
+              ),
+              linear-gradient(
+                90deg,
+                var(--accent-green) 0%,
+                var(--accent-lime) 14.84%,
+                var(--accent-red) 32.15%,
+                var(--accent-pink) 65.79%,
+                var(--accent-blue) 84.58%
+              );
+
+            /* Define a origem do background como a área da borda */
+            background-origin: border-box;
+            /* Faz o fundo sólido preencher a área interna (padding-box) e o gradiente preencher a borda (border-box) */
+            background-clip: padding-box, border-box;
+
+            /* Aplica o box-shadow:
+                - Primeiro, cria um espaço transparente para garantir que a borda externa não seja afetada.
+                - Depois, adiciona a borda gradiente ao redor do input com o  gradiente linear.
+            */
+            box-shadow: 0 0 0 3px transparent,
+              0 0 0 4px
+                linear-gradient(
+                  90deg,
+                  var(--accent-green) 0%,
+                  var(--accent-lime) 14.84%,
+                  var(--accent-red) 32.15%,
+                  var(--accent-pink) 65.79%,
+                  var(--accent-blue) 84.58%
+                );
+
+            /* Remove o outline padrão que o navegador adiciona no foco */
+            outline: none;
+
+            cursor: pointer;
+          }
+        }
+
+        /* 
+          Aplica a cor ao label ao passar o mouse sobre o input ou ao focar no input
+
+          A pseudoclasse :focus-within verifica se algum elemento filho dentro de .input-inner está focado (no caso, o input)
+        */
+        &:hover label,
+        &:focus-within label {
+          color: var(--background-brand);
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
 
 @media (width > 64em) {
