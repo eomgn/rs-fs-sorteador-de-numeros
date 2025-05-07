@@ -96,6 +96,7 @@ section {
   }
 
   form {
+    /* INPUT */
     & .input-wrapper {
       display: flex;
       gap: 0.75rem;
@@ -179,8 +180,6 @@ section {
 
             /* Remove o outline padrão que o navegador adiciona no foco */
             outline: none;
-
-            cursor: pointer;
           }
         }
 
@@ -192,9 +191,76 @@ section {
         &:hover label,
         &:focus-within label {
           color: var(--background-brand);
-          cursor: pointer;
         }
       }
+    }
+  }
+
+  & .checkbox-wrapper {
+    display: flex;
+    align-items: center;
+
+    padding-top: 1.25rem;
+
+    gap: 0.5rem;
+
+    & .switch {
+      width: 30px;
+      height: 20px;
+      display: flex;
+      position: relative;
+
+      & input {
+        width: 100%;
+        opacity: 0;
+        inset: 0;
+
+        &:checked + .slider {
+          background: linear-gradient(
+            var(--accent-pink) 0%,
+            var(--accent-blue) 98.93%
+          );
+        }
+
+        &:checked + .slider:before {
+          transform: translate(10px, -55%);
+        }
+      }
+
+      & .slider {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 1rem;
+        background-color: var(--content-tertiary);
+        padding: 3px;
+        transition: 0.4s;
+        cursor: pointer;
+
+        &::before {
+          position: absolute;
+          content: "";
+          width: 0.875rem;
+          height: 0.875rem;
+          background-color: var(--content-primary);
+          transition: 0.4s;
+          cursor: pointer;
+          top: 50%;
+          transform: translateY(-50%); /* centraliza verticalmente */
+          border-radius: 1rem;
+        }
+      }
+    }
+
+    & span {
+      font-family: var(--ff-sora-sans);
+      font-size: 0.75rem;
+      font-weight: 400;
+      line-height: 150%;
+      color: var(--content-primary);
     }
   }
 }
