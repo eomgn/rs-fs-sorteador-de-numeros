@@ -74,6 +74,7 @@ section {
   grid-area: sortition;
   display: grid;
   gap: 2.5rem;
+  padding-bottom: 5rem;
 
   div {
     & h2 {

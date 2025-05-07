@@ -1,5 +1,5 @@
 form {
-  /* INPUT */
+  /* INPUT - WRAPPER */
   & .input-wrapper {
     display: flex;
     gap: 0.75rem;
@@ -66,6 +66,11 @@ form {
           /* Faz o fundo sólido preencher a área interna (padding-box) e o gradiente preencher a borda (border-box) */
           background-clip: padding-box, border-box;
 
+          /* ANIMATION */
+          animation: borderMove 3s linear infinite;
+          background-size: 300% 100%; /* permite movimento */
+          background-position: 0% 0%;
+
           /* Aplica o box-shadow:
                 - Primeiro, cria um espaço transparente para garantir que a borda externa não seja afetada.
                 - Depois, adiciona a borda gradiente ao redor do input com o  gradiente linear.
@@ -97,72 +102,143 @@ form {
       }
     }
   }
-}
 
-& .checkbox-wrapper {
-  display: flex;
-  align-items: center;
-
-  padding-top: 1.25rem;
-
-  gap: 0.5rem;
-
-  & .switch {
-    width: 30px;
-    height: 20px;
+  /* CHECKBOX - WRAPPER */
+  & .checkbox-wrapper {
     display: flex;
-    position: relative;
+    align-items: center;
 
-    & input {
-      width: 100%;
-      opacity: 0;
-      inset: 0;
+    padding-block: 1.25rem 2.5rem;
 
-      &:checked + .slider {
-        background: linear-gradient(
-          var(--accent-pink) 0%,
-          var(--accent-blue) 98.93%
-        );
+    gap: 0.5rem;
+
+    & .switch {
+      width: 30px;
+      height: 20px;
+      display: flex;
+      position: relative;
+
+      & input {
+        width: 100%;
+        opacity: 0;
+        inset: 0;
+
+        &:checked + .slider {
+          background: linear-gradient(
+            var(--accent-pink) 0%,
+            var(--accent-blue) 98.93%
+          );
+        }
+
+        &:checked + .slider:before {
+          transform: translate(10px, -50%);
+        }
       }
 
-      &:checked + .slider:before {
-        transform: translate(10px, -55%);
+      & .slider {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 1rem;
+        background-color: var(--content-tertiary);
+        padding: 3px;
+        transition: 0.4s;
+        cursor: pointer;
+
+        &::before {
+          position: absolute;
+          content: "";
+          width: 0.875rem;
+          height: 0.875rem;
+          background-color: var(--content-primary);
+          transition: 0.4s;
+          cursor: pointer;
+          top: 50%;
+          transform: translateY(-50%); /* centraliza verticalmente */
+          border-radius: 1rem;
+        }
       }
     }
 
-    & .slider {
-      position: absolute;
-      content: "";
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      border-radius: 1rem;
-      background-color: var(--content-tertiary);
-      padding: 3px;
-      transition: 0.4s;
-      cursor: pointer;
-
-      &::before {
-        position: absolute;
-        content: "";
-        width: 0.875rem;
-        height: 0.875rem;
-        background-color: var(--content-primary);
-        transition: 0.4s;
-        cursor: pointer;
-        top: 50%;
-        transform: translateY(-50%); /* centraliza verticalmente */
-        border-radius: 1rem;
-      }
+    & span {
+      font-family: var(--ff-sora-sans);
+      font-size: 0.75rem;
+      font-weight: 400;
+      line-height: 150%;
+      color: var(--content-primary);
     }
   }
 
-  & span {
-    font-family: var(--ff-sora-sans);
-    font-size: 0.75rem;
-    font-weight: 400;
-    line-height: 150%;
-    color: var(--content-primary);
+  /* SUBMIT - WRAPPER */
+  & .submit-wrapper {
+    & input {
+      width: 100%;
+      padding: 1rem;
+
+      font-family: var(--ff-roboto-flex-sans);
+      font-weight: 500;
+      font-size: 1rem;
+      line-height: 150%;
+      text-transform: uppercase;
+
+      outline: none;
+      border: 2px solid transparent;
+      border-radius: 0.5rem;
+
+      cursor: pointer;
+
+      background-color: var(--background-tertiary);
+      color: var(--content-primary);
+
+      &:hover,
+      &:focus {
+        border: 2px solid transparent;
+        background-image: linear-gradient(
+            var(--background-secondary),
+            var(--background-secondary)
+          ),
+          linear-gradient(
+            90deg,
+            var(--accent-green) 0%,
+            var(--accent-lime) 14.84%,
+            var(--accent-red) 32.15%,
+            var(--accent-pink) 65.79%,
+            var(--accent-blue) 84.58%
+          );
+
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+
+        /* ANIMATION */
+        animation: borderMove 3s linear infinite;
+        background-size: 300% 100%; /* permite movimento */
+        background-position: 0% 0%;
+
+        box-shadow: 0 0 0 3px transparent,
+          0 0 0 4px
+            linear-gradient(
+              90deg,
+              var(--accent-green) 0%,
+              var(--accent-lime) 14.84%,
+              var(--accent-red) 32.15%,
+              var(--accent-pink) 65.79%,
+              var(--accent-blue) 84.58%
+            );
+
+        outline: none;
+      }
+    }
+  }
+}
+
+@keyframes borderMove {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 300% 0%;
   }
 }
