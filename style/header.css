@@ -16,5 +16,6 @@ header {
 @media (width > 64em) {
   header {
     justify-content: start;
+    padding-bottom: 5.5625rem;
   }
 }

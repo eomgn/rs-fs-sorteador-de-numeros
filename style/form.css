@@ -113,8 +113,8 @@ form {
     gap: 0.5rem;
 
     & .switch {
-      width: 30px;
-      height: 20px;
+      width: 1.875rem;
+      height: 1.25rem;
       display: flex;
       position: relative;
 
@@ -131,7 +131,7 @@ form {
         }
 
         &:checked + .slider:before {
-          transform: translate(10px, -50%);
+          transform: translate(0.625rem, -50%);
         }
       }
 
@@ -144,7 +144,7 @@ form {
         left: 0;
         border-radius: 1rem;
         background-color: var(--content-tertiary);
-        padding: 3px;
+        padding: 0.1875rem;
         transition: 0.4s;
         cursor: pointer;
 
@@ -240,5 +240,11 @@ form {
   }
   100% {
     background-position: 300% 0%;
+  }
+}
+
+@media (width > 64em) {
+  & .input-inner {
+    width: 5.375rem;
   }
 }

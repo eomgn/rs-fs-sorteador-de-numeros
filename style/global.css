@@ -62,13 +62,3 @@ img {
   max-width: 100%;
   display: inline-block;
 }
-
-/* Shapes
-
-position: absolute;
-width: 1366px;
-height: 768px;
-left: 0px;
-top: 0px;
-
-background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 22.66%, rgba(0, 0, 0, 0.54) 100%), url(inspiration-geometry.png); */

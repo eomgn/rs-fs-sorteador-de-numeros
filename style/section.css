@@ -15,6 +15,7 @@ section {
     font-family: var(--ff-roboto-mono-sans);
     font-weight: 600;
     font-size: 1rem;
+    line-height: 150%;
 
     /* gradient for text */
     text-transform: uppercase;
@@ -104,5 +105,27 @@ section {
     grid-template-areas:
       "hero sortition"
       "works sortition";
+
+    column-gap: 6.75rem;
+  }
+
+  #hero {
+    padding-bottom: 2.375rem;
+    & h1 {
+      font-size: 4rem;
+      padding-top: 0.75rem;
+    }
+  }
+
+  #works {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #sortition {
+    grid-area: sortition;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
