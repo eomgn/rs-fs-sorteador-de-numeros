@@ -58,7 +58,7 @@ function getNumbersWithRepeat(interval, start, end) {
   createList(listNumbers);
 }
 
-async function createList(arr) {
+function createList(arr) {
   hide(form);
   const sortitionHeader = document.querySelector(".sortition-header");
   const sortitionHeaderTitle = document.querySelector(".sortition-header h2");
