@@ -64,6 +64,7 @@ function createList(arr) {
   const sortitionHeader = document.querySelector(".sortition-header");
   const sortitionHeaderTitle = document.querySelector(".sortition-header h2");
   const sortitionHeaderP = document.querySelector(".sortition-header p");
+  const newSortition = document.querySelector(".newSortition");
 
   sortitionHeader.style.textAlign = "center";
 
@@ -81,6 +82,8 @@ function createList(arr) {
     li.textContent = i;
     ul.append(li);
   }
+
+  appear(newSortition);
 }
 
 // verificar inputs
@@ -116,6 +119,10 @@ function verifyInputs(interval, start, end) {
 
 function hide(element) {
   element.style.display = "none";
+}
+
+function appear(element) {
+  element.style.display = "block";
 }
 
 // gerando numero aleatório

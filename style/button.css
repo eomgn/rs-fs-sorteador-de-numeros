@@ -1,0 +1,60 @@
+/* SUBMIT - WRAPPER */
+& .submit-wrapper {
+  & input {
+    width: 100%;
+    padding: 1rem;
+
+    font-family: var(--ff-roboto-flex-sans);
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 150%;
+    text-transform: uppercase;
+
+    outline: none;
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+
+    cursor: pointer;
+
+    background-color: var(--background-tertiary);
+    color: var(--content-primary);
+
+    &:hover,
+    &:focus {
+      border: 2px solid transparent;
+      background-image: linear-gradient(
+          var(--background-secondary),
+          var(--background-secondary)
+        ),
+        linear-gradient(
+          90deg,
+          var(--accent-green) 0%,
+          var(--accent-lime) 14.84%,
+          var(--accent-red) 32.15%,
+          var(--accent-pink) 65.79%,
+          var(--accent-blue) 84.58%
+        );
+
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+
+      /* ANIMATION */
+      animation: borderMove 3s linear infinite;
+      background-size: 300% 100%; /* permite movimento */
+      background-position: 0% 0%;
+
+      box-shadow: 0 0 0 3px transparent,
+        0 0 0 4px
+          linear-gradient(
+            90deg,
+            var(--accent-green) 0%,
+            var(--accent-lime) 14.84%,
+            var(--accent-red) 32.15%,
+            var(--accent-pink) 65.79%,
+            var(--accent-blue) 84.58%
+          );
+
+      outline: none;
+    }
+  }
+}
