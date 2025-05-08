@@ -1,11 +1,11 @@
 const form = document.querySelector("form");
 const sortitionHeaderTitle = document.querySelector(".sortition-header");
-const listingNumbers = document.querySelector(".listingNumbers ul");
 const intervalInput = document.querySelector("#interval");
 const startInput = document.querySelector("#start");
 const endInput = document.querySelector("#end");
 const switchInput = document.querySelector("#switch");
 const submitSortition = document.querySelector("#submitSortition");
+const listingNumbers = document.querySelector(".listingNumbers");
 
 let listNumbers = [];
 
@@ -45,7 +45,7 @@ function getNumbersNoRepeat(interval, start, end) {
 
     listNumbers.push(value);
   }
-  createElementLi(listNumbers);
+  createList(listNumbers);
 }
 
 // gerando pelo intervalo - possibilidade de repeticao
@@ -55,15 +55,27 @@ function getNumbersWithRepeat(interval, start, end) {
 
     listNumbers.push(value);
   }
-  createElementLi(listNumbers);
+
+  createList(listNumbers);
 }
 
-function createElementLi(arr) {
+function createList(arr) {
+  hide(form);
+
+  const sortitionHeaderTitle = document.querySelector(".sortition-header h2");
+  const sortitionHeaderP = document.querySelector(".sortition-header p");
+
+  sortitionHeaderTitle.textContent = "Resultado do sorteio";
+  sortitionHeaderP.textContent = "1º resultado";
+
+  const ul = document.createElement("ul");
   const li = document.createElement("li");
+
+  listingNumbers.append(ul);
 
   for (const i of arr) {
     li.textContent = arr;
-    listingNumbers.append(li);
+    ul.append(li);
   }
 }
 
