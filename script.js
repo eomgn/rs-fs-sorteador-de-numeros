@@ -52,14 +52,13 @@ function getNumbersNoRepeat(interval, start, end) {
 function getNumbersWithRepeat(interval, start, end) {
   for (let i = 0; i < interval; i++) {
     let value = getRandomNumber(start, end);
-
     listNumbers.push(value);
   }
 
   createList(listNumbers);
 }
 
-function createList(arr) {
+async function createList(arr) {
   hide(form);
   const sortitionHeader = document.querySelector(".sortition-header");
   const sortitionHeaderTitle = document.querySelector(".sortition-header h2");
@@ -80,10 +79,17 @@ function createList(arr) {
   for (const i of arr) {
     const li = document.createElement("li");
     li.textContent = i;
+
     ul.append(li);
+
+    li.classList.add("animate");
   }
 
-  appear(newSortition);
+  if (newSortition) {
+    setTimeout(() => {
+      newSortition.classList.add("show");
+    }, 200); // pequeno atraso para suavidade extra
+  }
 }
 
 // verificar inputs
@@ -119,10 +125,6 @@ function verifyInputs(interval, start, end) {
 
 function hide(element) {
   element.style.display = "none";
-}
-
-function appear(element) {
-  element.style.display = "block";
 }
 
 // gerando numero aleatório
