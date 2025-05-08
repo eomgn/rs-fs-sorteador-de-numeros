@@ -1,5 +1,4 @@
 const form = document.querySelector("form");
-const sortitionHeaderTitle = document.querySelector(".sortition-header");
 const intervalInput = document.querySelector("#interval");
 const startInput = document.querySelector("#start");
 const endInput = document.querySelector("#end");
@@ -61,12 +60,18 @@ function getNumbersWithRepeat(interval, start, end) {
 
 function createList(arr) {
   hide(form);
-
+  hide(submitSortition);
+  const sortitionHeader = document.querySelector(".sortition-header");
   const sortitionHeaderTitle = document.querySelector(".sortition-header h2");
   const sortitionHeaderP = document.querySelector(".sortition-header p");
 
+  sortitionHeader.style.textAlign = "center";
+
   sortitionHeaderTitle.textContent = "Resultado do sorteio";
+
   sortitionHeaderP.textContent = "1º resultado";
+  sortitionHeaderP.style.fontWeight = "800";
+  sortitionHeaderP.style.textTransform = "uppercase";
 
   const ul = document.createElement("ul");
   const li = document.createElement("li");
