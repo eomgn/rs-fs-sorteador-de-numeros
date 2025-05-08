@@ -44,6 +44,7 @@ function getNumbersNoRepeat(interval, start, end) {
 
     listNumbers.push(value);
   }
+
   createList(listNumbers);
 }
 
@@ -60,7 +61,6 @@ function getNumbersWithRepeat(interval, start, end) {
 
 function createList(arr) {
   hide(form);
-  hide(submitSortition);
   const sortitionHeader = document.querySelector(".sortition-header");
   const sortitionHeaderTitle = document.querySelector(".sortition-header h2");
   const sortitionHeaderP = document.querySelector(".sortition-header p");
@@ -121,9 +121,9 @@ function hide(element) {
 
 // gerando numero aleatório
 function getRandomNumber(start, end) {
-  let number = Math.random() * (end - start) + 1;
-
-  return Math.round(number);
+  start = Math.ceil(start);
+  end = Math.floor(end);
+  return Math.floor(Math.random() * (end - start) + start);
 }
 
 // garantindo numeros inteiros positivos
