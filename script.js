@@ -1,10 +1,24 @@
+// form
 const form = document.querySelector("form");
+
+// inputs
 const intervalInput = document.querySelector("#interval");
 const startInput = document.querySelector("#start");
 const endInput = document.querySelector("#end");
 const switchInput = document.querySelector("#switch");
 const submitSortition = document.querySelector("#submitSortition");
+const submitNewSortition = document.querySelector("#submitNewSortition");
+
+// sortition area
+const sortitionHeader = document.querySelector(".sortition-header");
+const sortitionHeaderTitle = document.querySelector(".sortition-header h2");
+const sortitionHeaderP = document.querySelector(".sortition-header p");
+
+// div que ira ser inserido a ul com a lista de numeros
 const listingNumbers = document.querySelector(".listingNumbers");
+
+// criando elemento de ul
+const ul = document.createElement("ul");
 
 let listNumbers = [];
 
@@ -19,6 +33,10 @@ submitSortition.addEventListener("click", (event) => {
   endInput.value = "";
 
   console.log(listNumbers);
+});
+
+submitNewSortition.addEventListener("click", () => {
+  newSortition();
 });
 
 // gerando pelo intervalo - SEM possibilidade de repeticao
@@ -58,11 +76,27 @@ function getNumbersWithRepeat(interval, start, end) {
   createList(listNumbers);
 }
 
+function newSortition() {
+  sortitionHeader.style.textAlign = "start";
+
+  sortitionHeaderTitle.textContent = "quero sortear:";
+
+  sortitionHeaderP.textContent = `Defina o intervalo e a quantidade de números, clique em "Sortear" e veja os resultados na tela. É rápido e fácil!`;
+  sortitionHeaderP.style.fontWeight = "normal";
+  sortitionHeaderP.style.textTransform = "initial";
+
+  hide(listingNumbers);
+  appear(form);
+}
+
 function createList(arr) {
+  ul.innerHTML = "";
+  listNumbers = [];
+
+  // aplicando ao form a funcao para esconder (display: none)
   hide(form);
-  const sortitionHeader = document.querySelector(".sortition-header");
-  const sortitionHeaderTitle = document.querySelector(".sortition-header h2");
-  const sortitionHeaderP = document.querySelector(".sortition-header p");
+
+  // input submit apos criação da lista para aplicar class .show para animacao
   const newSortition = document.querySelector(".newSortition");
 
   sortitionHeader.style.textAlign = "center";
@@ -73,9 +107,6 @@ function createList(arr) {
   sortitionHeaderP.style.fontWeight = "800";
   sortitionHeaderP.style.textTransform = "uppercase";
 
-  const ul = document.createElement("ul");
-  listingNumbers.prepend(ul);
-
   for (const i of arr) {
     const li = document.createElement("li");
     li.textContent = i;
@@ -84,24 +115,33 @@ function createList(arr) {
 
     li.classList.add("animate");
   }
+  listingNumbers.prepend(ul);
 
   if (newSortition) {
     setTimeout(() => {
       newSortition.classList.add("show");
     }, 200); // pequeno atraso para suavidade extra
   }
+
+  appear(listingNumbers);
 }
 
 // verificar inputs
 function verifyInputs(interval, start, end) {
-  if (start == "" || end == "") {
+  interval = parseInt(interval);
+  start = parseInt(start);
+  end = parseInt(end);
+
+  // console.log(interval)
+
+  if (isNaN(start) || isNaN(end)) {
     alert(
       "Preencha o número inicial (De) e o número final (Até) para o sorteio."
     );
     return;
   }
 
-  if (interval == "") {
+  if (isNaN(interval)) {
     alert("Preencha a quantidade de Números para serem sorteados.");
     return;
   }
@@ -116,6 +156,11 @@ function verifyInputs(interval, start, end) {
     return;
   }
 
+  if (start > end) {
+    alert("O número inicial (De) NÃO pode ser maior que final (Até).");
+    return;
+  }
+
   if (switchInput.checked) {
     getNumbersNoRepeat(interval, start, end);
   } else {
@@ -125,6 +170,10 @@ function verifyInputs(interval, start, end) {
 
 function hide(element) {
   element.style.display = "none";
+}
+
+function appear(element) {
+  element.style.display = "block";
 }
 
 // gerando numero aleatório

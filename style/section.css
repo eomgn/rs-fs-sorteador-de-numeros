@@ -116,7 +116,6 @@ section {
       line-height: 150%;
       color: var(--color-inverse);
 
-      background-color: var(--background-brand);
       border-radius: 1.75rem;
       opacity: 0;
       transform: scale(2) rotate(0deg);
@@ -200,7 +199,6 @@ section {
   100% {
     transform: scale(1) rotate(360deg);
     opacity: 1;
-    background-color: transparent;
     color: var(--background-brand);
   }
 }
