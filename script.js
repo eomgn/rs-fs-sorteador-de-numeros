@@ -74,12 +74,10 @@ function createList(arr) {
   sortitionHeaderP.style.textTransform = "uppercase";
 
   const ul = document.createElement("ul");
-  const li = document.createElement("li");
-
-  listingNumbers.append(ul);
 
   for (const i of arr) {
-    li.textContent = arr;
+    const li = document.createElement("li");
+    li.textContent = i;
     ul.append(li);
   }
 }
@@ -123,7 +121,7 @@ function hide(element) {
 function getRandomNumber(start, end) {
   start = Math.ceil(start);
   end = Math.floor(end);
-  return Math.floor(Math.random() * (end - start) + start);
+  return Math.floor(Math.random() * (end - start + 1) + start);
 }
 
 // garantindo numeros inteiros positivos
