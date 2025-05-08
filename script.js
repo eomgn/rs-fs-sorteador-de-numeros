@@ -1,3 +1,6 @@
+const form = document.querySelector("form");
+const sortitionHeaderTitle = document.querySelector(".sortition-header");
+const listingNumbers = document.querySelector(".listingNumbers ul");
 const intervalInput = document.querySelector("#interval");
 const startInput = document.querySelector("#start");
 const endInput = document.querySelector("#end");
@@ -11,6 +14,10 @@ submitSortition.addEventListener("click", (event) => {
   event.preventDefault();
 
   verifyInputs(intervalInput.value, startInput.value, endInput.value);
+
+  intervalInput.value = "";
+  startInput.value = "";
+  endInput.value = "";
 
   console.log(listNumbers);
 });
@@ -38,6 +45,7 @@ function getNumbersNoRepeat(interval, start, end) {
 
     listNumbers.push(value);
   }
+  createElementLi(listNumbers);
 }
 
 // gerando pelo intervalo - possibilidade de repeticao
@@ -46,6 +54,16 @@ function getNumbersWithRepeat(interval, start, end) {
     let value = getRandomNumber(start, end);
 
     listNumbers.push(value);
+  }
+  createElementLi(listNumbers);
+}
+
+function createElementLi(arr) {
+  const li = document.createElement("li");
+
+  for (const i of arr) {
+    li.textContent = arr;
+    listingNumbers.append(li);
   }
 }
 
@@ -73,16 +91,15 @@ function verifyInputs(interval, start, end) {
     return;
   }
 
-  if (start > end) {
-    alert("O número inicial (De) deve ser menor que o final (Até).");
-    return;
-  }
-
   if (switchInput.checked) {
     getNumbersNoRepeat(interval, start, end);
   } else {
     getNumbersWithRepeat(interval, start, end);
   }
+}
+
+function hide(element) {
+  element.style.display = "none";
 }
 
 // gerando numero aleatório
