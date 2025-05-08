@@ -74,6 +74,7 @@ function createList(arr) {
   sortitionHeaderP.style.textTransform = "uppercase";
 
   const ul = document.createElement("ul");
+  listingNumbers.append(ul);
 
   for (const i of arr) {
     const li = document.createElement("li");
